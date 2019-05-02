@@ -34,3 +34,37 @@ ouput:
 
 '''
 
+
+cur_dir = 'C:/Users/amit/Desktop/reviews-ratings-scrapper'
+out_file = open( cur_dir + '/datasets/movies.csv', 'w', newline='')
+k = 1
+
+#write index
+words  = ['title', 'reviews_link']
+writer = csv.writer(out_file)
+writer.writerow(words)
+
+for item in lst:
+
+    title_tag = item.find("a", href = True)
+    title = title_tag.text.strip()
+    link = 'https://www.imdb.com' + title_tag['href'].split('?')[0] + 'reviews?ref_=tt_urv'
+    if not title or not link:
+        continue
+    
+    words  = [title, link]
+    writer = csv.writer(out_file)
+    writer.writerow(words)
+    print("\n\nTitle: " + title + "\nLink: " + link)
+
+'''
+output:
+Title: Avengers: Infinity War
+Link: https://www.imdb.com/title/tt4154756/reviews?ref_=tt_urv
+...
+'''
+
+out_file.close()
+
+
+
