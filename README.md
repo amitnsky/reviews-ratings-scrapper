@@ -8,3 +8,6 @@ It has three basic modules:
 
 
 3. normalised.py
+
+
+The final version of code is kept inside Jupyter Notebook 'scrapper.ipynb'.
